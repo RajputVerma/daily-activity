@@ -1,4 +1,5 @@
 name: Daily Commit (Human Style)
+
 on:
   schedule:
     - cron: "15 5 * * *"
@@ -9,8 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Random delay to look human
+        shell: bash
         run: |
-          delay=$(( RANDOM % 2400 ))
+          delay=$((RANDOM % 2400))
           echo "Waiting for $delay seconds before acting..."
           sleep $delay
-      ...
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Do your daily task
+        run: |
+          echo "Daily task running..."
