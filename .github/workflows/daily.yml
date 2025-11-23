@@ -1,0 +1,16 @@
+name: Daily Commit (Human Style)
+on:
+  schedule:
+    - cron: "15 5 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Random delay to look human
+        run: |
+          delay=$(( RANDOM % 2400 ))
+          echo "Waiting for $delay seconds before acting..."
+          sleep $delay
+      ...
